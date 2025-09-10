@@ -1,73 +1,119 @@
-# Welcome to your Lovable project
+# Локальная платформа обучения (LMS)
 
-## Project info
+Полнофункциональная система обучения и аттестации персонала, работающая полностью офлайн в браузере.
 
-**URL**: https://lovable.dev/projects/988b3021-c8f7-44de-8c7c-63100a11413b
+## 🎯 Основные возможности
 
-## How can I edit this code?
+### Для обучаемых:
+- Просмотр доступных курсов с отслеживанием прогресса
+- Прохождение уроков с поддержкой Markdown и мультимедиа
+- Встроенная система тестирования (в разработке)
+- Персональный прогресс и статистика
 
-There are several ways of editing your application.
+### Для администраторов:
+- Полное управление курсами и уроками
+- Конструктор тестов с различными типами вопросов
+- Детальная отчетность по прогрессу пользователей
+- Экспорт/импорт данных в JSON и CSV
 
-**Use Lovable**
+## 🚀 Быстрый старт
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/988b3021-c8f7-44de-8c7c-63100a11413b) and start prompting.
+### Первый запуск:
+1. Откройте приложение в браузере
+2. **Для администраторов**: Нажмите "Я администратор - войти в систему"
+   - Логин: `admin`
+   - Пароль: `123`
+3. **Для обучаемых**: Заполните форму регистрации (ФИО и отдел)
 
-Changes made via Lovable will be committed automatically to this repo.
+### Технические требования:
+- Современный браузер (Chrome, Firefox, Safari, Edge)
+- JavaScript включен
+- Локальное хранилище браузера доступно
 
-**Use your preferred IDE**
+## 🛠 Технологический стек
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Frontend**: React 18 + TypeScript
+- **UI**: Tailwind CSS + shadcn/ui
+- **Маршрутизация**: React Router
+- **Хранилище**: localStorage браузера
+- **Сборщик**: Vite
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📁 Структура проекта
 
-Follow these steps:
+```
+src/
+├── components/           # Переиспользуемые компоненты
+│   ├── ui/              # UI библиотека (shadcn/ui)
+│   ├── Layout.tsx       # Основной макет приложения
+│   └── auth/            # Компоненты аутентификации
+├── pages/               # Страницы приложения
+│   ├── admin/           # Административная панель
+│   └── student/         # Интерфейс для обучаемых
+├── lib/                 # Утилиты и хранилище
+│   ├── storage.ts       # Менеджер localStorage
+│   └── utils.ts         # Вспомогательные функции
+└── main.tsx            # Точка входа
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 💾 Структура данных
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Все данные хранятся в localStorage браузера:
 
-# Step 3: Install the necessary dependencies.
-npm i
+- `lms_users` - Пользователи системы
+- `lms_courses` - Курсы и уроки  
+- `lms_quizzes` - Тесты и вопросы
+- `lms_progress` - Прогресс пользователей
+- `lms_current_user` - Текущий активный пользователь
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🎓 Создание контента
+
+### Уроки поддерживают:
+- **Markdown** для форматирования текста
+- **Шорткоды** для мультимедиа:
+  - `[img:path/to/image.jpg]` - Изображения
+  - `[file:path/to/document.pdf]` - Файлы для скачивания
+  - `[video:path/to/video.mp4]` - Видео
+  - `[quiz:quiz-id]` - Встроенные тесты
+
+### Типы вопросов в тестах:
+- **single** - Один правильный ответ
+- **multiple** - Несколько правильных ответов
+- **truefalse** - Верно/Неверно
+- **fillblank** - Заполнение пропусков
+- **sequence** - Установление последовательности
+- **dragdrop** - Перетаскивание (сопоставление)
+- **dragdrop-categories** - Перетаскивание по категориям
+- **hotspot** - Клик по области изображения
+- **hotspot-multiple** - Клик по нескольким областям
+- **hotspot-sequence** - Клик по областям в порядке
+
+## 📊 Отчетность
+
+Система автоматически собирает статистику:
+- Прогресс по урокам и курсам
+- Результаты тестирования
+- Время последней активности
+- Средние баллы и процент прохождения
+
+Данные можно экспортировать в форматах JSON и CSV.
+
+## 🔧 Разработка
+
+### Установка зависимостей:
+```bash
+npm install
+```
+
+### Запуск в режиме разработки:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Сборка для продакшена:
+```bash
+npm run build
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📝 Лицензия
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/988b3021-c8f7-44de-8c7c-63100a11413b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Этот проект создан для внутреннего использования и обучения.
